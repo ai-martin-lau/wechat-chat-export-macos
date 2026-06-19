@@ -148,7 +148,3 @@ Use this project only with local data from your own device and account. Do not u
 ## License
 
 MIT
-
-## Star history
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ai-martin-lau/wechat-chat-export-macos&type=Date)](https://star-history.com/#ai-martin-lau/wechat-chat-export-macos&Date)

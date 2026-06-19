@@ -98,7 +98,3 @@ WCDB/SQLCipher、LLDB キャプチャ、4.1+ passphrase モデルの基礎研究
 ## License
 
 MIT
-
-## Star 履歴
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ai-martin-lau/wechat-chat-export-macos&type=Date)](https://star-history.com/#ai-martin-lau/wechat-chat-export-macos&Date)
