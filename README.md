@@ -165,3 +165,7 @@ WCDB/SQLCipher 格式、LLDB 捕获和 4.1+ passphrase 派生的基础研究来�
 ## License
 
 MIT
+
+## Star 趋势
+
+[![Star 趋势图](https://api.star-history.com/svg?repos=ai-martin-lau/wechat-chat-export-macos&type=Date)](https://star-history.com/#ai-martin-lau/wechat-chat-export-macos&Date)

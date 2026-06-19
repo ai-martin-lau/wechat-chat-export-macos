@@ -98,3 +98,7 @@ Utiliza este proyecto únicamente con datos locales de tu propio dispositivo y c
 ## License
 
 MIT
+
+## Historial de estrellas
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ai-martin-lau/wechat-chat-export-macos&type=Date)](https://star-history.com/#ai-martin-lau/wechat-chat-export-macos&Date)

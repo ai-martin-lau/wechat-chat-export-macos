@@ -98,3 +98,7 @@ WCDB/SQLCipher, LLDB 캡처, 4.1+ passphrase 모델의 기초 연구 출처는 [
 ## License
 
 MIT
+
+## Star 기록
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ai-martin-lau/wechat-chat-export-macos&type=Date)](https://star-history.com/#ai-martin-lau/wechat-chat-export-macos&Date)
