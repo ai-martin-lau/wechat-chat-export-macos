@@ -1,0 +1,22 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# Sensitive runtime artifacts
+work/
+output/
+secrets/
+decrypted/
+encrypted-snapshot/
+*.db
+*.db-wal
+*.db-shm
+*.jsonl
+passphrase.json
+all_keys.json
+WeChat-official.zip
+我的微信原文.txt
+导出校验.jsonl
+
