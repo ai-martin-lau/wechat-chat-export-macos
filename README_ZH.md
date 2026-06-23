@@ -2,10 +2,6 @@
   <a href="README.md">English</a> · <a href="README_ZH.md">简体中文</a> · <a href="README_JA.md">日本語</a> · <a href="README_KO.md">한국어</a> · <a href="README_ES.md">Español</a>
 </p>
 
-<p align="center">
-  <img src="assets/cover.png" alt="WeChat Chat Export for macOS" width="100%">
-</p>
-
 # wechat-chat-export-macos
 
 > 从你自己的 Mac 本地微信数据库里，只导出你本人发送的纯文本。
