@@ -1,9 +1,9 @@
 <p align="center">
-  <a href="README.md">简体中文</a> · <a href="README_EN.md">English</a> · <a href="README_JA.md">日本語</a> · <a href="README_KO.md">한국어</a> · <a href="README_ES.md">Español</a>
+  <a href="README.md">English</a> · <a href="README_ZH.md">简体中文</a> · <a href="README_JA.md">日本語</a> · <a href="README_KO.md">한국어</a> · <a href="README_ES.md">Español</a>
 </p>
 
 <p align="center">
-  <img src="assets/cover.png" alt="wechat-chat-export-macos" width="100%">
+  <img src="assets/cover.png" alt="WeChat Chat Export for macOS" width="100%">
 </p>
 
 # wechat-chat-export-macos
