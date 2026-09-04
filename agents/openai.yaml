@@ -1,4 +1,0 @@
-interface:
-  display_name: "macOS 微信本人文本导出"
-  short_description: "安全导出 macOS 微信数据库中本人发送的纯文本记录"
-  default_prompt: "Use $wechat-chat-export-macos to safely export only the text messages I sent from my local macOS WeChat database."
