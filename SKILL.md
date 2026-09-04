@@ -1,6 +1,12 @@
 ---
 name: wechat-chat-export-macos
 description: Safely export only text messages sent by the current user's own account from local WeChat databases on macOS. Use when the user asks to export WeChat chat history, collect only their own messages for writing-style analysis, decrypt a local WeChat 4.x WCDB database, diagnose macOS WeChat database/key compatibility, or repeat the verified WeChat 4.1.10 Apple Silicon export workflow.
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+  - Edit
+  - AskUserQuestion
 ---
 
 # macOS WeChat Own-Text Export
@@ -19,6 +25,14 @@ Export only text authored by the user's current WeChat account. Treat app signin
 - Restore the official app and remove key/decrypted intermediates on both success and failure.
 - Do not package real chat content, key files, or decrypted databases inside this Skill.
 
+## Prerequisites
+
+- macOS on Apple Silicon, WeChat 4.1.10 (the verified path; other versions go through `references/compatibility.md` first).
+- Xcode or Command Line Tools with `lldb` (`lldb -P` must print a path); `sudo` for the capture step.
+- Python 3.9+ with `venv`; script dependencies are only `pycryptodome` and `zstandard` (`scripts/requirements.txt`).
+- `CLAUDE_SKILL_DIR` is set by Claude Code. In other runtimes (Codex, plain shell) replace it with the absolute path of this Skill directory.
+- Typical use: feed the exported own-text corpus to a local writing-style analysis. Keep the corpus on this machine; do not upload it.
+
 Read [references/compatibility.md](references/compatibility.md) before handling any version other than WeChat 4.1.10 on Apple Silicon. Read [references/database-format.md](references/database-format.md) only when debugging key verification, decryption, WAL behavior, or sender selection.
 
 ## Workflow
@@ -28,10 +42,10 @@ Read [references/compatibility.md](references/compatibility.md) before handling 
 Run:
 
 ```bash
-python3 "$SKILL_DIR/scripts/inspect_wechat.py"
+python3 "${CLAUDE_SKILL_DIR}/scripts/inspect_wechat.py"
 ```
 
-Where `SKILL_DIR` is this Skill directory. Confirm:
+Claude Code provides `CLAUDE_SKILL_DIR` as this Skill directory. Confirm:
 
 1. Architecture is `arm64`.
 2. WeChat version is `4.1.10` for the verified local path.
@@ -58,7 +72,7 @@ Create a local virtual environment and install only the script dependencies:
 
 ```bash
 python3 -m venv "$WORK/.venv"
-"$WORK/.venv/bin/pip" install -r "$SKILL_DIR/scripts/requirements.txt"
+"$WORK/.venv/bin/pip" install -r "${CLAUDE_SKILL_DIR}/scripts/requirements.txt"
 ```
 
 Record the original message database and WAL sizes before launching a controlled capture session. Do not copy all media or unrelated databases when the request is text-only.
@@ -85,7 +99,7 @@ Do not continue if backup verification fails.
 Run:
 
 ```bash
-python3 "$SKILL_DIR/scripts/find_cipher_hook.py" \
+python3 "${CLAUDE_SKILL_DIR}/scripts/find_cipher_hook.py" \
   --app /Applications/WeChat.app --json
 ```
 
@@ -122,7 +136,7 @@ Quit WeChat before reading the database. Inspect `message_0.db-wal` and compare 
 Decrypt only a copy:
 
 ```bash
-"$WORK/.venv/bin/python" "$SKILL_DIR/scripts/decrypt_message_db.py" \
+"$WORK/.venv/bin/python" "${CLAUDE_SKILL_DIR}/scripts/decrypt_message_db.py" \
   --encrypted "$MESSAGE_DB" \
   --key-file "$WORK/secrets/passphrase.json" \
   --output "$WORK/decrypted/message/message_0.db"
@@ -135,7 +149,7 @@ Add `--ignore-wal` only after satisfying the decision above. Require `PRAGMA qui
 Run:
 
 ```bash
-"$WORK/.venv/bin/python" "$SKILL_DIR/scripts/export_my_text.py" \
+"$WORK/.venv/bin/python" "${CLAUDE_SKILL_DIR}/scripts/export_my_text.py" \
   --decrypted "$WORK/decrypted" \
   --my-wxid "$CONFIRMED_WXID" \
   --output "$WORK/output"
@@ -186,4 +200,3 @@ Keep only the requested own-text outputs and, if useful, the verified official b
 ### 10. Report Completion
 
 Give the exact absolute paths, exported message count, source scope (Mac-local/checkpointed/WAL-aware), verification result, and restoration status. State clearly that phone-only history is absent unless it was successfully migrated and visible in this Mac's local database.
-
